@@ -1,0 +1,20 @@
+#!/bin/bash
+
+VPN="/opt/cisco/secureclient/bin/vpn"
+SERVER="vpn-ac.urz.uni-heidelberg.de"
+USER="{{USERNAME}}"
+PASS="{{PASSWORD}}"
+SECRET="{{SECRET}}"
+
+export PATH="/opt/homebrew/bin:$PATH"
+
+# generate OTP
+OTP=$(oathtool --totp -b "$SECRET")
+
+# -s forces scripted input mode (required)
+"$VPN" -s connect "$SERVER" <<EOF
+$USER
+$PASS
+$OTP
+y
+EOF
