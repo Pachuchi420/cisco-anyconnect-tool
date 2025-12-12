@@ -8,13 +8,15 @@ SECRET="{{SECRET}}"
 
 export PATH="/opt/homebrew/bin:$PATH"
 
+
 # generate OTP
 OTP=$(oathtool --totp -b "$SECRET")
 
 # -s forces scripted input mode (required)
-"$VPN" -s connect "$SERVER" <<EOF
+"$VPN" -s connect "$SERVER" > ~/tools/log.txt  2>&1 <<EOF
 $USER
 $PASS
 $OTP
 y
 EOF
+
