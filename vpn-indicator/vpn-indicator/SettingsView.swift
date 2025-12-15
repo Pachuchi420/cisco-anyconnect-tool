@@ -77,20 +77,39 @@ struct SettingsView: View {
         .navigationTitle("Settings")
     }
     
+    
+    func areFieldsEmpty() -> Bool {
+        print(vpnAddress.isEmpty)
+        print(vpnAddress)
+        if vpnAddress.isEmpty || username.isEmpty || password.isEmpty || secret.isEmpty {
+            return true
+        }
+        
+        return false
+    }
+    
     func saveData(){
-        // Save non-sensitive data to UserDefaults
-        UserDefaults.standard.set(vpnAddress, forKey: "vpnAddress")
-        UserDefaults.standard.set(username, forKey: "username")
+        
+        if areFieldsEmpty() == false {
+            UserDefaults.standard.set(vpnAddress, forKey: "vpnAddress")
+            UserDefaults.standard.set(username, forKey: "username")
 
-        // Save sensitive data to Keychain
-        keychain.set(password, forKey: "password")
-        keychain.set(secret, forKey: "secret")
+            // Save sensitive data to Keychain
+            keychain.set(password, forKey: "password")
+            keychain.set(secret, forKey: "secret")
 
-        // Show success message with animation
-        successMessage = "Data saved successfully!"
-        withAnimation {
+            // Show success message with animation
+            successMessage = "Data saved successfully!"
+            withAnimation {
+                showSuccessMessage = true
+            }
+        } else {
+            successMessage = "Missing obligatory fields"
             showSuccessMessage = true
         }
+        
+        
+       
     }
 }
 

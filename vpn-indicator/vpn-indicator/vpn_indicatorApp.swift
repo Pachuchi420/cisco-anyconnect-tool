@@ -9,20 +9,20 @@ import SwiftUI
 
 @main
 struct vpn_indicatorApp: App {
+    @State private var isConnected = false
     @State private var showSettings = false
+
     
-    
+
     var body: some Scene {
-       MenuBarExtra(
-        "Menu Bar Example",
-        systemImage: "characters.uppercase"
-       ) {
-           ContentView()
+       MenuBarExtra {
+           ContentView(isConnected: $isConnected)
                .overlay(alignment: .topTrailing){
                    Button(
                         "Quit",
                         systemImage: "xmark.circle.fill"
                    ){
+                       
                        NSApp.terminate(nil)
                    }
                    .labelStyle(.iconOnly)
@@ -30,9 +30,9 @@ struct vpn_indicatorApp: App {
                    .padding(6)
                }
                .frame(width: 300, height: 180)
-       }
-       .menuBarExtraStyle(.window)
-        
+       } label: {
+           MenuBarIcon(isConnected: isConnected)
+       }.menuBarExtraStyle(.window)
         
         WindowGroup(id: "settings-view") {
                     SettingsView()
@@ -42,3 +42,14 @@ struct vpn_indicatorApp: App {
     
    
 }
+
+struct MenuBarIcon: View {
+    let isConnected: Bool
+
+    var body: some View {
+        Image(isConnected ? "vpn_connected" : "vpn_disconnected")
+            .renderingMode(.template)
+            .foregroundStyle(.primary)
+    }
+}
+
