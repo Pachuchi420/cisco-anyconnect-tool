@@ -7,6 +7,7 @@
 
 import SwiftUI
 import KeychainSwift
+import KeyboardShortcuts
 
 struct SettingsView: View {
 
@@ -21,11 +22,8 @@ struct SettingsView: View {
     
     
     var body: some View {
-        HStack(
-            alignment: .top,
-            spacing: 20
-            
-        ){
+        
+        VStack{
             VStack(
                 alignment: .center,
                 spacing: 0
@@ -33,11 +31,11 @@ struct SettingsView: View {
                 
                 Text("User Data")
                     .font(.title)
-
-
+                
+                
                 FormField(label: "VPN Address", fieldLabel: "Enter the server you want to connect to.", isSecure: false, text: $vpnAddress)
                 FormField(label: "Username", fieldLabel: "Enter the username you use under your institution", isSecure: false, text: $username)
-                FormField(label: "Password", isSecure: true, text: $password)
+                FormField(label: "Password", fieldLabel: "Enter your password", isSecure: false, text: $password)
                 FormField(label: "Secret", fieldLabel: "Enter the secret for your OTP", isSecure: true, text: $secret)
                 
                 // Success message display
@@ -63,18 +61,12 @@ struct SettingsView: View {
                 .padding()
                 
             }
-            .frame(maxWidth: .infinity)
-            
-            
-            VStack{
-                Text("Settings")
-                    .font(.title)
-            }
-            .frame(maxWidth: .infinity)
-            
+            Divider()
             
         }
-        .navigationTitle("Settings")
+       
+        
+
     }
     
     
@@ -89,7 +81,6 @@ struct SettingsView: View {
     }
     
     func saveData(){
-        
         if areFieldsEmpty() == false {
             UserDefaults.standard.set(vpnAddress, forKey: "vpnAddress")
             UserDefaults.standard.set(username, forKey: "username")

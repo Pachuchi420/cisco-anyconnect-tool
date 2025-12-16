@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1A49631A2EECE45400C8D9F1 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1A4963192EECE45400C8D9F1 /* KeychainSwift */; };
+		1ADF59FC2EF1B08E004771F3 /* SwiftOTP in Frameworks */ = {isa = PBXBuildFile; productRef = 1ADF59FB2EF1B08E004771F3 /* SwiftOTP */; };
+		1ADF5A182EF20634004771F3 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 1ADF5A172EF20634004771F3 /* KeyboardShortcuts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,23 +35,9 @@
 		1A4962F42EECBE3600C8D9F1 /* vpn-indicatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "vpn-indicatorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		1A214B152EF0B79400F33CB6 /* Exceptions for "vpn-indicator" folder in "vpn-indicator" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				scripts/cisco.sh,
-				scripts/dis_cisco.sh,
-			);
-			target = 1A4962DC2EECBE3400C8D9F1 /* vpn-indicator */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		1A4962DF2EECBE3400C8D9F1 /* vpn-indicator */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				1A214B152EF0B79400F33CB6 /* Exceptions for "vpn-indicator" folder in "vpn-indicator" target */,
-			);
 			path = "vpn-indicator";
 			sourceTree = "<group>";
 		};
@@ -70,7 +58,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1ADF59FC2EF1B08E004771F3 /* SwiftOTP in Frameworks */,
 				1A49631A2EECE45400C8D9F1 /* KeychainSwift in Frameworks */,
+				1ADF5A182EF20634004771F3 /* KeyboardShortcuts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +122,8 @@
 			name = "vpn-indicator";
 			packageProductDependencies = (
 				1A4963192EECE45400C8D9F1 /* KeychainSwift */,
+				1ADF59FB2EF1B08E004771F3 /* SwiftOTP */,
+				1ADF5A172EF20634004771F3 /* KeyboardShortcuts */,
 			);
 			productName = "vpn-indicator";
 			productReference = 1A4962DD2EECBE3400C8D9F1 /* vpn-indicator.app */;
@@ -217,6 +209,8 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				1A4963182EECE43D00C8D9F1 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				1ADF59FA2EF1B08E004771F3 /* XCRemoteSwiftPackageReference "SwiftOTP" */,
+				1ADF5A162EF20634004771F3 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1A4962DE2EECBE3400C8D9F1 /* Products */;
@@ -620,6 +614,22 @@
 				minimumVersion = 24.0.0;
 			};
 		};
+		1ADF59FA2EF1B08E004771F3 /* XCRemoteSwiftPackageReference "SwiftOTP" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lachlanbell/SwiftOTP.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.2;
+			};
+		};
+		1ADF5A162EF20634004771F3 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -627,6 +637,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1A4963182EECE43D00C8D9F1 /* XCRemoteSwiftPackageReference "keychain-swift" */;
 			productName = KeychainSwift;
+		};
+		1ADF59FB2EF1B08E004771F3 /* SwiftOTP */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1ADF59FA2EF1B08E004771F3 /* XCRemoteSwiftPackageReference "SwiftOTP" */;
+			productName = SwiftOTP;
+		};
+		1ADF5A172EF20634004771F3 /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1ADF5A162EF20634004771F3 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

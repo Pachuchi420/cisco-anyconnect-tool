@@ -6,38 +6,34 @@
 //
 
 import SwiftUI
+import KeyboardShortcuts
 
 @main
 struct vpn_indicatorApp: App {
     @State private var isConnected = false
-    @State private var showSettings = false
-
+    @State private var errorMessage = ""
+    
+    
+    
     
 
     var body: some Scene {
+      
        MenuBarExtra {
-           ContentView(isConnected: $isConnected)
-               .overlay(alignment: .topTrailing){
-                   Button(
-                        "Quit",
-                        systemImage: "xmark.circle.fill"
-                   ){
-                       
-                       NSApp.terminate(nil)
-                   }
-                   .labelStyle(.iconOnly)
-                   .buttonStyle(.plain)
-                   .padding(6)
-               }
-               .frame(width: 300, height: 180)
-       } label: {
+           ContentView(isConnected: $isConnected, errorMessage: $errorMessage)
+        } label: {
            MenuBarIcon(isConnected: isConnected)
        }.menuBarExtraStyle(.window)
         
         WindowGroup(id: "settings-view") {
-                    SettingsView()
-        }
+            SettingsView()
+        }.defaultSize(width: 10, height: 10).windowResizability(.contentMinSize)
+        
+        WindowGroup(id: "error-view") {
+            ErrorView(errorMessage: $errorMessage)
+        }.defaultSize(width: 10, height: 10).windowResizability(.contentMinSize)
     }
+    
     
     
    
@@ -52,4 +48,5 @@ struct MenuBarIcon: View {
             .foregroundStyle(.primary)
     }
 }
+
 
