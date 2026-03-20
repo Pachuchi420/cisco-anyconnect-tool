@@ -33,10 +33,12 @@ struct SettingsView: View {
                     .font(.title)
                 
                 
-                FormField(label: "VPN Address", fieldLabel: "Enter the server you want to connect to.", isSecure: false, text: $vpnAddress)
-                FormField(label: "Username", fieldLabel: "Enter the username you use under your institution", isSecure: false, text: $username)
-                FormField(label: "Password", fieldLabel: "Enter your password", isSecure: false, text: $password)
-                FormField(label: "Secret", fieldLabel: "Enter the secret for your OTP", isSecure: true, text: $secret)
+                FormField(label: "VPN Address", fieldLabel: "Enter the server you want to connect to.", isSecure: false, text: $vpnAddress, customButton: false, buttonLabel:"", buttonIcon:"")
+                FormField(label: "Username", fieldLabel: "Enter the username you use under your institution", isSecure: false, text: $username, customButton: false, buttonLabel:"", buttonIcon:"")
+                FormField(label: "Password", fieldLabel: "Enter your password", isSecure: false, text: $password, customButton: false, buttonLabel:"", buttonIcon:"")
+                FormField(label: "Secret", fieldLabel: "Enter the secret for your OTP", isSecure: true, text: $secret, customButton: true, buttonLabel:"", buttonIcon:"questionmark.circle", buttonAction: {
+                    print("Hello world")
+                })
                 
                 // Success message display
                 if showSuccessMessage {

@@ -25,9 +25,10 @@ struct vpn_indicatorApp: App {
            MenuBarIcon(isConnected: isConnected)
        }.menuBarExtraStyle(.window)
         
-        WindowGroup(id: "settings-view") {
+        Settings(){
             SettingsView()
-        }.defaultSize(width: 10, height: 10).windowResizability(.contentMinSize)
+                .frame(width: 400, height: 420)
+        }
         
         WindowGroup(id: "error-view") {
             ErrorView(errorMessage: $errorMessage)

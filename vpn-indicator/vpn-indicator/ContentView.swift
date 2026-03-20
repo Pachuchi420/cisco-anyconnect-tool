@@ -19,6 +19,8 @@ struct ContentView: View {
     @State var connectButtonDisabled : Bool = false
     @State var disconnectButtonDisabled : Bool = true
     
+    @Environment(\.openSettings) private var openSettings
+    
         
     
     var body: some View {
@@ -61,7 +63,7 @@ struct ContentView: View {
             Divider()
             
             Button(action: {
-                openSettingsWindow()
+                openSettings()
             }) {Label("Settings", systemImage: "gear")}
                 .pointerStyle(.link)
             
@@ -82,10 +84,7 @@ struct ContentView: View {
         
     }
     
-    func openSettingsWindow(){
-        NSApplication.shared.activate(ignoringOtherApps: true)
-        openWindow(id: "settings-view")
-    }
+
     
     
     func openErrorWindow(errorMessage : String){
